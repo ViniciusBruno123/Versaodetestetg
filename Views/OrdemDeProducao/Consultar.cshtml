@@ -1,0 +1,102 @@
+﻿@model List<PCPMetalurgicaInter.Models.OrdemDeProducao>
+
+
+@{
+    ViewData["TituloPagina"] = "Consulta de Ordens de Produção";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/consultaOrdemProducao.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+}
+
+<main class="container py-4">
+    @if (TempData["Sucesso"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            @TempData["Sucesso"]
+            <button type="button" class="btn btn-industrial" data-bs-dismiss="alert" aria-label="Fechar"></button>
+        </div>
+    }
+
+    @if (TempData["Erro"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+            @TempData["Erro"]
+            <button type="button" class="btn btn-industrial" data-bs-dismiss="alert" aria-label="Fechar"></button>
+        </div>
+    }
+    <!-- FILTROS -->
+    <div class="mb-2 d-flex justify-content-between">
+        <label class="form-label fw-bold">Resultados</label>
+    </div>
+
+    <div class="card-industrial">
+        <div class="table-responsive">
+            <table id="tabelaResultados" class="table table-bordered table-sm table-striped mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>QUANTIDADE</th>
+                        <th>DATA EMISSÃO</th>
+                        <th>PEÇA ID</th>
+                        <th>PEÇA</th>
+                        <th>EMISSOR</th>
+                        <th>ETAPA ATUAL</th>
+                        <th>SITUAÇÃO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr data-id="@item.Id">
+                        <td>@item.Id</td>
+                        <td>@item.Quantidade</td>
+                        <td>@item.DataEmissao</td>
+                        <td>@item.PecaId</td>
+                        <td>@item.Peca?.Descricao</td>
+                        <td>@item.PCPEmissor?.Funcionario.Nome</td>
+                        <td>@item.Apontamentos?.LastOrDefault()?.Operacao?.Descricao</td>
+                        <td>
+                            @if (!item.Fechada && !item.Cancelada)
+                            {
+                                @:Ativo
+                            }
+                            else if (item.Fechada && !item.Cancelada)
+                            {
+                                @:Fechado
+                            }
+                            else if (!item.Fechada && item.Cancelada)
+                            {
+                                @:Cancelado
+                            }
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</main>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#tabelaResultados').DataTable({
+                language: {
+                    url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/pt-BR.json"
+                },
+                paging: false,
+                info: false
+            });
+            $('#tabelaResultados tbody').on('click', 'tr', function () {
+            const id = $(this).data('id');
+            if (id) {
+                window.location.href = `/OrdemDeProducao/Editar/${id}`;
+            }
+            });
+        });
+    </script>
+}

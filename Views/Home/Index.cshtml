@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["TituloPagina"] = "PÁGINA INICIAL";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/home.css" />
+}
+
+
+<main class="corpo">
+    @if (ViewBag.Erro != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+            @ViewBag.Erro
+            <button type="button" class="btn btn-industrial" data-bs-dismiss="alert" aria-label="Fechar"></button>
+        </div>
+    }
+    <a class="cadastro_peca" asp-controller="Peca" asp-action="Cadastrar">
+        CADASTRO DE ITENS
+    </a>
+    <a class="consulta_peca" asp-controller="Peca" asp-action="Consultar">
+        CONSULTA DE ITENS
+    </a>
+    <a class="cadastro_operacoes" asp-controller="Operacao" asp-action="Cadastrar">
+        CADASTRO DE OPERAÇÕES
+    </a>
+    <a class="consulta_operacoes" asp-controller="Operacao" asp-action="Consultar">
+        CONSULTA DE OPERAÇÕES
+    </a>
+    <a class="cadastro_tipo_operacoes" asp-controller="TipoDeOperacao" asp-action="Cadastrar">
+        CADASTRO DE TIPOS DE OPERAÇÕES
+    </a>
+    <a class="consulta_tipo_operacoes" asp-controller="TipoDeOperacao" asp-action="Consultar">
+        CONSULTA DE TIPOS DE OPERAÇÕES
+    </a>
+    <a class="geracao_ops" asp-controller="OrdemDeProducao" asp-action="Emitir">
+        GERAÇÃO DE OPS
+    </a>
+    <a class="consulta_ops" asp-controller="OrdemDeProducao" asp-action="Consultar">
+        CONSULTA DE OPS
+    </a>
+    <a class="gerar_apontamento" asp-controller="Apontamento" asp-action="ApontarOperador">
+        GERAR APONTAMENTO
+    </a>
+</main>

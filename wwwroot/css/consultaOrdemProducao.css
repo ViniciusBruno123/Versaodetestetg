@@ -1,0 +1,37 @@
+﻿.titulo {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.filtros {
+    margin-bottom: 2rem;
+}
+
+.filtros-header input,
+.filtros-header select {
+    margin-bottom: 0.5rem;
+    padding: 8px;
+    font-size: 1rem;
+}
+
+.filtros-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+tr:hover {
+    background-color: #f0f8ff; /* azul claro */
+    transition: background-color 0.2s ease;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+    tr:hover td {
+        color: #036200; /* verde escuro */
+    }
+
+tr[onclick] {
+    cursor: pointer;
+}

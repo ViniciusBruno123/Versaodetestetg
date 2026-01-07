@@ -1,0 +1,21 @@
+﻿main.corpo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+}
+
+    main.corpo a {
+        padding: 12px;
+        background-color: #ffffff;
+        border: 1px solid #aaa;
+        text-decoration: none;
+        color: #333;
+        font-size: 1.2rem;
+        text-align: center;
+        font-weight: 600;
+    }
+
+        main.corpo a:hover {
+            background-color: #eee;
+        }

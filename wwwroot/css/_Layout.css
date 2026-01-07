@@ -1,0 +1,101 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fundo escuro, com estética metálica */
+body {
+    background-color: #2c2c2c;
+    color: #f0f0f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100%;
+}
+
+/* Envolve toda a estrutura */
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cabeçalho industrial */
+.cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(90deg, #1c1c1c, #383838);
+    padding: 1rem 10%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    border-bottom: 2px solid #555;
+}
+
+.cabecalho .home-icon,
+.cabecalho .close {
+    color: #f0f0f0;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.cabecalho .home-icon:hover,
+.cabecalho .close:hover {
+    color: #ffcc00;
+    transform: scale(1.1);
+}
+
+/* Título com visual técnico */
+.cabecalho_titulo {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+    color: #ffcc00;
+}
+
+/* Ícones animados */
+.icone-hover {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.icone-hover:hover {
+    transform: scale(1.2);
+}
+
+/* Plano de fundo para áreas neutras */
+.bgGray {
+    background-color: #3f3f3f;
+}
+
+/* Labels destacados */
+label {
+    font-weight: bold;
+    color: #cccccc;
+}
+
+/* Botões estilo industrial */
+.btn-industrial {
+    background-color: #555;
+    color: #f0f0f0;
+    border: 2px solid #777;
+    padding: 6px 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-industrial:hover {
+    background-color: #ffcc00;
+    color: #1c1c1c;
+    transform: translateY(-2px);
+}
+
+.card-industrial {
+    background-color: #2b2b2b;
+    border: 1px solid #666;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    padding: 16px;
+    border-radius: 4px;
+}
+

@@ -1,0 +1,73 @@
+﻿@model List<PCPMetalurgicaInter.Models.TipoDeOperacao>
+
+@{
+    ViewData["TituloPagina"] = "CONSULTA DE TIPO DE OPERAÇÕES";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/consultarOperacao.css" asp-append-version="true" />
+}
+
+<main class="container py-4">
+    @if (TempData["Sucesso"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            @TempData["Sucesso"]
+            <button type="button" class="btn btn-industrial" data-bs-dismiss="alert" aria-label="Fechar"></button>
+        </div>
+    }
+
+    @if (TempData["Erro"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+            @TempData["Erro"]
+            <button type="button" class="btn btn-industrial" data-bs-dismiss="alert" aria-label="Fechar"></button>
+        </div>
+    }
+    <!-- RESULTADOS EM TABELA -->
+    <section class="resultados">
+        <p class="titulo">Resultados</p>
+        <div class="card-industrial">
+            <div class="table-responsive">
+                <table id="tabelaResultados" class="table table-bordered table-sm table-striped table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>DESCRIÇÃO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr data-id="@item.Id">
+                                <td>@item.Id</td>
+                                <td>@item.Descricao</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#tabelaResultados').DataTable({
+                language: {
+                    url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/pt-BR.json"
+                },
+                paging: false,
+                info: false
+            });
+            $('#tabelaResultados tbody').on('click', 'tr', function () {
+            const id = $(this).data('id');
+            if (id) {
+                window.location.href = `/TipoDeOperacao/Editar/${id}`;
+            }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["TituloPagina"] = "LOGIN";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <style>
+        main.corpo {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 40px;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        .form-group label {
+            font-weight: 600;
+        }
+
+        .form-group input {
+            padding: 10px;
+            width: 100%;
+            font-size: 1rem;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .botao-login {
+            padding: 12px;
+            background-color: #ffffff;
+            border: 1px solid #aaa;
+            color: #333;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+            .botao-login:hover {
+                background-color: #eee;
+            }
+
+       
+    </style>
+}
+
+<main class="corpo">
+    <form asp-action="Login" asp-controller="Home" method="post">
+        <div class="form-group">
+            <label for="Login">Login</label>
+            <input type="text" name="Login" required />
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="Senha">Senha</label>
+            <input type="password" name="Senha" required />
+        </div>
+        <br>
+        <button type="submit" class="btn btn-industrial">ENTRAR</button>
+    </form>
+    @if (ViewBag.Erro != null)
+    {
+        @ViewBag.Erro
+    }
+    
+</main>
+

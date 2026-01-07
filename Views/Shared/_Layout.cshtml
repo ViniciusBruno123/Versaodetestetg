@@ -1,0 +1,78 @@
+﻿@{
+    var logpcp = Context.Session.GetInt32("PCPId");
+    var logoperador = Context.Session.GetInt32("OperadorId");
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PCPMetalurgicaInter</title>
+
+    <!-- Adicionar o CSS do Select2 no <head> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PCPMetalurgicaInter.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    @RenderSection("Styles", required: false)
+
+    <link rel="stylesheet" href="~/css/_Layout.css" asp-append-version="true"/>
+</head>
+<body>
+    <div class="wrapper d-flex flex-column min-vh-100">
+
+    <header class="cabecalho">
+        <a href="javascript:location.reload()" class="home-icon" title="Recarregar">
+            <i class="fa-solid fa-rotate-right fa-2x"></i>
+        </a>
+
+        <h1 class="cabecalho_titulo" style="font-size: 1.5rem;">
+            @ViewData["TituloPagina"]
+        </h1>
+        @if(logpcp != null || logoperador != null)
+        {
+            <div class="right-icons">
+            <a asp-controller="Home" asp-action="Logoff" title="Sair">
+                <i class="fa-solid fa-right-from-bracket fa-2x"></i>
+            </a>
+            @if(logpcp != null )
+            {
+                <a asp-controller="Home" asp-action="Index" title="Fechar">
+                    <i class="fa-solid fa-house fa-2x"></i>
+                </a>
+                @if (ViewData["TituloPagina"] != "PÁGINA INICIAL")
+                {
+                    <a href="javascript:window.history.back();" title="Voltar">
+                        <i class="fa-solid fa-arrow-left fa-2x"></i>
+                    </a>
+                }
+            }
+            </div>
+        }
+    </header>
+    <main class="container flex-grow-1 py-4" role="main">
+            @RenderBody()
+    </main>
+
+    <footer class="border-top footer text-muted py-3">
+        <div class="container">
+            &copy; 2025 - Ferrum Code Soluções Industriais
+        </div>
+    </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

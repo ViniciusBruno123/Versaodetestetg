@@ -1,0 +1,63 @@
+﻿.grupo-formulario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1%;
+    padding: 1%;
+    background-color: #f2f2f2;
+}
+
+    .grupo-formulario label {
+        min-width: 7.5rem; /* 120px */
+        font-size: 1rem;
+    }
+
+    .grupo-formulario input[type="text"],
+    .grupo-formulario input[type="date"] {
+        padding: 0.5rem;
+        flex: 1;
+        min-width: 9.375rem; /* 150px */
+        font-size: 1rem;
+    }
+
+    .grupo-formulario input[type="checkbox"] {
+        transform: scale(1.8); /* Escala relativa */
+        margin-inline-end: 2%; /* mantido percentual */
+    }
+
+    .grupo-formulario .botao-pesquisar {
+        padding: 0.5rem 1rem;
+        background-color: #ccc;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+
+.tabelas {
+    display: flex;
+    gap: 1%;
+    padding: 1%;
+}
+
+.tabela-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    background-color: #fff;
+    padding: 1%;
+    max-height: 25rem; /* 400px */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 0.063rem solid #aaa; /* 1px */
+    padding: 0.75rem;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}

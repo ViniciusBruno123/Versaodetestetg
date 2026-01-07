@@ -1,0 +1,56 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    font-family: 'Montserrat', sans-serif;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    font-size: 14px;
+}
+
+th {
+    color: #555;
+}
+
+    th::after {
+        font-family: 'Montserrat', sans-serif;
+        content: " ↓";
+        font-size: 12px;
+    }
+
+.results {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+
+tr:hover {
+    background-color: #f0f8ff; /* azul claro */
+    transition: background-color 0.2s ease;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+    tr:hover td {
+        color: #036200; /* verde escuro */
+    }
+
+.container {
+    background-color: transparent; /* Remover o fundo */
+}
+
+tr[onclick] {
+    cursor: pointer;
+}

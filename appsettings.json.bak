@@ -1,0 +1,12 @@
+{
+    "ConnectionStrings": {
+        "DefaultConnection": "server=localhost;database=testevazio;user=root;password=sydnei1009"
+    },
+    "Logging": {
+        "LogLevel": {
+            "Default": "Information",
+            "Microsoft.AspNetCore": "Warning"
+        }
+    },
+    "AllowedHosts": "*"
+}
